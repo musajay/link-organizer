@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap');
+
+:root {
+  --paper: #F7F4EE;
+  --ink: #26241F;
+  --ink-soft: #6B6858;
+  --tag: #4C6B5D;
+  --danger: #9C4A3D;
+  --rule: #D9D3C4;
+}
+
+* { box-sizing: border-box; }
+
+/* ---------- Page layout ---------- */
+
+body {
+  max-width: 720px;      /* readable column width on wide screens */
+  margin: 0 auto;        /* auto left/right margins center the column */
+  padding: 40px 20px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+h1 {
+  margin: 0 0 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--rule);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* ---------- Controls (search, category, sort) ---------- */
+
+.controls {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.controls input {
+  flex: 1;               /* search box takes all leftover width */
+  min-width: 0;          /* ...and is allowed to shrink in tight spaces */
+  padding: 8px 10px;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: #fff;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.controls select {
+  padding: 8px 10px;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: #fff;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.controls input:focus-visible,
+.controls select:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+/* ---------- Link list ---------- */
+
+/* Also styles the plain-text empty-state messages
+   ("No links currently saved" / "No links match your search"). */
+#dashboardList {
+  color: var(--ink-soft);
+}
+
+.link-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.link-row:last-child { border-bottom: none; }
+
+.link-title {
+  flex: 1;               /* title fills the row, category stays its own width */
+  min-width: 0;
+  color: var(--ink);
+  font-weight: 500;
+  text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.link-title:hover { text-decoration: underline; }
+
+.link-title:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.link-category {
+  flex-shrink: 0;
+  padding-left: 6px;
+  border-left: 2px solid var(--tag);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--tag);
+}
+
+/* ---------- Narrow windows ---------- */
+
+@media (max-width: 520px) {
+  .controls { flex-wrap: wrap; }
+  .controls input { flex-basis: 100%; }  /* search gets its own line */
+}

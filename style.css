@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap');
+
+:root {
+  --paper: #F7F4EE;
+  --ink: #26241F;
+  --ink-soft: #6B6858;
+  --tag: #4C6B5D;
+  --danger: #9C4A3D;
+  --rule: #D9D3C4;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  width: 300px;
+  margin: 0;
+  padding: 14px 16px 18px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+header {
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--rule);
+}
+
+h1 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+select, button {
+  font-family: inherit;
+  font-size: 13px;
+  border-radius: 3px;
+}
+
+select {
+  padding: 6px 8px;
+  border: 1px solid var(--rule);
+  background: #fff;
+  color: var(--ink);
+}
+
+/* ---------- Save row (primary action) ---------- */
+
+.save-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.save-row select {
+  flex: 1;
+  min-width: 0;
+}
+
+#saveButton {
+  padding: 6px 14px;
+  border: none;
+  background: var(--tag);
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+#saveButton:hover { background: #3f5a4e; }
+#saveButton:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+#status {
+  min-height: 14px;
+  margin: 2px 0 10px;
+  font-size: 12px;
+  color: var(--tag);
+}
+
+/* ---------- Add category row (secondary action) ---------- */
+
+.add-category-row {
+  display: flex;
+  gap: 6px;
+  margin: 10px 0 12px;
+}
+
+.add-category-row input {
+  flex: 1;
+  min-width: 0;
+  padding: 5px 7px;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: #fff;
+  font-family: inherit;
+  font-size: 12px;
+  color: var(--ink);
+}
+
+.add-category-row button {
+  padding: 5px 10px;
+  border: 1px solid var(--tag);
+  border-radius: 3px;
+  background: transparent;
+  color: var(--tag);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.add-category-row button:hover {
+  background: var(--tag);
+  color: #fff;
+}
+
+/* ---------- Filter and sort rows ---------- */
+
+.filter-row,
+.sort-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+
+.sort-row { margin-bottom: 10px; }
+
+.filter-row label,
+.sort-row label {
+  width: 34px; /* keeps both dropdowns lined up */
+}
+
+.filter-row select,
+.sort-row select {
+  padding: 4px 6px;
+  font-size: 12px;
+}
+
+/* ---------- Link list ---------- */
+
+#linkList {
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.link-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.link-row:last-child { border-bottom: none; }
+
+.link-main { flex: 1; min-width: 0; }
+
+.link-row a {
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 500;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.link-row a:hover { text-decoration: underline; }
+
+.link-category {
+  display: block;
+  margin-top: 2px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: var(--tag);
+  border-left: 2px solid var(--tag);
+  padding-left: 5px;
+}
+
+.deleteBtn {
+  background: none;
+  border: none;
+  color: var(--ink-soft);
+  cursor: pointer;
+  font-size: 12px;
+  padding: 2px 4px;
+  flex-shrink: 0;
+}
+
+.deleteBtn:hover { color: var(--danger); }
+
+#linkList:empty::after {
+  content: "Nothing saved yet.";
+  display: block;
+  padding: 14px 0;
+  color: var(--ink-soft);
+  font-size: 12px;
+}
+
+/* ---------- Export / import row (tertiary actions) ---------- */
+
+.data-row {
+  position: relative;
+  display: flex;
+  gap: 6px;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--rule);
+}
+
+.data-row button,
+.data-row label {
+  padding: 4px 10px;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: transparent;
+  color: var(--ink-soft);
+  font-family: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.data-row button:hover,
+.data-row label:hover {
+  border-color: var(--ink-soft);
+  color: var(--ink);
+}
+
+/* The real file input stays in the page (so keyboards and screen readers
+   can reach it) but is visually hidden; the label acts as its button. */
+#importFileInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  overflow: hidden;
+}
+
+#importFileInput:focus-visible + label,
+.data-row button:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Link Organizer</h1>
+  </header>
+
+  <div class="save-row">
+    <select id="categorySelect"></select>
+    <button id="saveButton">Save page</button>
+  </div>
+  <p id="status"></p>
+
+  <div class="add-category-row">
+    <input type="text" id="newCategoryInput" placeholder="New category">
+    <button id="categorySaveButton">Add</button>
+  </div>
+
+  <div class="filter-row">
+    <label for="filterSelect">Show</label>
+    <select id="filterSelect"></select>
+  </div>
+
+  <div class="sort-row">
+    <label for="sortSelect">Sort</label>
+    <select id="sortSelect">
+      <option value="ascend">Newest first</option>
+      <option value="descend">Oldest first</option>
+    </select>
+  </div>
+
+  <div id="linkList"></div>
+
+  <div class="data-row">
+    <button id="exportLinksBtn">Export</button>
+    <input type="file" id="importFileInput" accept=".json">
+    <label for="importFileInput">Import</label>
+
+    <button id="openDashboardBtn">Dashboard</button>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
