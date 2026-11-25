@@ -1,0 +1,10 @@
+# personal data from the export feature
+my-links*.json
+
+#react/Vite
+node_modules/
+dist/
+
+# OS clutter
+.DS_Store
+Thumbs.db
